@@ -1,0 +1,2355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My School Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light theme variables */
+            --bg-primary: #f5f7ff;
+            --bg-secondary: #ffffff;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --accent-primary: #4f46e5;
+            --accent-secondary: #10b981;
+            --accent-light: #e0e7ff;
+            --border-color: #e2e8f0;
+            --shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+            --card-bg: #ffffff;
+            --subject-card: #f8fafc;
+        }
+
+        .dark-theme {
+            /* Dark theme variables */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --accent-primary: #6366f1;
+            --accent-secondary: #34d399;
+            --accent-light: #312e81;
+            --border-color: #334155;
+            --shadow: rgba(0, 0, 0, 0.3) 0px 8px 24px;
+            --card-bg: #1e293b;
+            --subject-card: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-secondary);
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dark-theme header {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 22px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 15px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover {
+            background-color: var(--accent-light);
+            color: var(--accent-primary);
+        }
+
+        nav a.active {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+
+        .nav-icon {
+            font-size: 16px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 20px;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-light);
+            transition: all 0.2s;
+            margin-left: 15px;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent-primary);
+            color: white;
+            transform: rotate(15deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 70px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        /* Subjects Grid */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 16px;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .subject-card {
+            background-color: var(--subject-card);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-primary);
+        }
+
+        .dark-theme .subject-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .subject-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .subject-name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .subject-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .file-count {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--accent-primary);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Files Display Section */
+        .files-section {
+            padding: 60px 0;
+            display: none;
+        }
+
+        .files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .files-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .files-title i {
+            color: var(--accent-primary);
+            font-size: 24px;
+        }
+
+        .back-to-subjects {
+            background-color: var(--accent-light);
+            color: var(--accent-primary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .back-to-subjects:hover {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .file-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .file-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-theme .file-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .file-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .file-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            font-size: 22px;
+        }
+
+        .file-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--accent-primary);
+        }
+
+        .file-type {
+            color: var(--text-secondary);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .file-content {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 15px;
+            max-height: 150px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .file-content::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .file-content::-webkit-scrollbar-track {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+
+        .file-content::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 10px;
+        }
+
+        .file-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .file-tag {
+            background-color: var(--accent-light);
+            color: var(--accent-primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-view {
+            background-color: var(--accent-primary);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .btn-view:hover {
+            background-color: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-download {
+            background-color: var(--accent-light);
+            color: var(--accent-primary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .btn-download:hover {
+            background-color: var(--accent-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .current-subject {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-light);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .subjects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-secondary);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+                z-index: 99;
+                gap: 0;
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav a {
+                width: 90%;
+                justify-content: center;
+                margin: 5px 0;
+            }
+            
+            .header-container {
+                position: relative;
+            }
+            
+            .theme-toggle {
+                position: absolute;
+                right: 60px;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .stats {
+                gap: 25px;
+            }
+            
+            .stat-number {
+                font-size: 28px;
+            }
+            
+            .files-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .files-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .file-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                MySchoolPortfolio
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home" class="active" data-subject="all">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Home</span>
+                    </a></li>
+                    <li><a href="#" data-subject="english">
+                        <i class="fas fa-book nav-icon"></i>
+                        <span>English</span>
+                    </a></li>
+                    <li><a href="#" data-subject="science">
+                        <i class="fas fa-flask nav-icon"></i>
+                        <span>Science</span>
+                    </a></li>
+                    <li><a href="#" data-subject="history">
+                        <i class="fas fa-landmark nav-icon"></i>
+                        <span>History</span>
+                    </a></li>
+                    <li><a href="#" data-subject="geography">
+                        <i class="fas fa-globe nav-icon"></i>
+                        <span>Geography</span>
+                    </a></li>
+                    <li><a href="#" data-subject="urdu">
+                        <i class="fas fa-language nav-icon"></i>
+                        <span>Urdu</span>
+                    </a></li>
+                    <li>
+                        <button class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>My Complete School Portfolio</h1>
+            <p>All my school work, homework, projects, and files organized by subject. Click on any assignment to view or download it.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Subjects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">39</div>
+                    <div class="stat-label">Assignments</div>
+                </div>
+            
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="section" id="subjects">
+        <div class="container">
+            <h2 class="section-title">My Subjects</h2>
+            <p class="section-subtitle">Click on any subject to view all assignments, homework, and projects for that subject</p>
+            
+            <div class="subjects-grid">
+                <!-- English Subject -->
+                <div class="subject-card" data-subject="english">
+                    <div class="subject-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="subject-name">English Literature</h3>
+                    <p class="subject-desc">Frankenstein analysis, character studies, theme exploration, and literary devices</p>
+                    <div class="file-count">14 assignments</div>
+                </div>
+                
+                <!-- Science Subject -->
+                <div class="subject-card" data-subject="science">
+                    <div class="subject-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="subject-name">Science</h3>
+                    <p class="subject-desc">Biology, Chemistry, Physics, Biotechnology, and interactive simulations</p>
+                    <div class="file-count">10 assignments</div>
+                </div>
+                
+                <!-- History Subject -->
+                <div class="subject-card" data-subject="history">
+                    <div class="subject-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3 class="subject-name">History & Social Studies</h3>
+                    <p class="subject-desc">Pakistan history, political developments, leadership comparisons, and important figures</p>
+                    <div class="file-count">6 assignments</div>
+                </div>
+                
+                <!-- Geography Subject -->
+                <div class="subject-card" data-subject="geography">
+                    <div class="subject-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="subject-name">Geography</h3>
+                    <p class="subject-desc">World cities, transport studies, urban vs rural comparisons, and maps</p>
+                    <div class="file-count">7 assignments</div>
+                </div>
+                
+                <!-- Urdu Subject -->
+                <div class="subject-card" data-subject="urdu">
+                    <div class="subject-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="subject-name">Urdu Literature</h3>
+                    <p class="subject-desc">چوتھے درویش کی کردار نگاری and other Urdu literary analysis</p>
+                    <div class="file-count">2 assignment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Files Sections (Initially Hidden) -->
+    
+    <!-- English Files -->
+    <section class="files-section" id="english-files">
+        <div class="container">
+            <div class="files-header">
+                <h2 class="files-title">
+                    <i class="fas fa-book"></i>
+                    English Literature Assignments
+                </h2>
+                <button class="back-to-subjects">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Subjects
+                </button>
+            </div>
+            
+            <div class="files-grid">
+                <!-- Frankenstein Growth Chart -->
+                <div class="file-card" data-file="growth-chart">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Character Growth Chart</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Victor Frankenstein vs The Creature</strong></p>
+                        <p>Comparative analysis of character development throughout the novel.</p>
+                        <p>Morals, relationships, strength, and decisions tracked for both characters.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">Character Analysis</span>
+                        <span class="file-tag">Growth Chart</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/character growth chart.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/character growth chart.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Conflict-Solution Puzzle -->
+                <div class="file-card" data-file="conflict-puzzle">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Conflict-Solution Puzzle</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Conflict–Solution Matching Puzzle</strong></p>
+                        <p>Match conflict types to quotes and solutions/outcomes.</p>
+                        <p>Man vs Self, Man vs Man, Man vs Society, Man vs Nature.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">Conflict Analysis</span>
+                        <span class="file-tag">Literary Devices</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/conflict-solution puzzle.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/conflict-solution puzzle.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Frankenstein's Instagram -->
+                <div class="file-card" data-file="frankenstein-instagram">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Frankenstein's Instagram Page</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Instagram profile for The Creature</strong></p>
+                        <p>Creative project showing The Creature's perspective through social media.</p>
+                        <p>Posts, followers, following, and bio that reflect the character's emotions.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">Creative Project</span>
+                        <span class="file-tag">Character Perspective</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/frankenstein's instagram page.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/conflict-solution puzzle.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mary Shelley Info -->
+                <div class="file-card" data-file="mary-shelley">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Mary Shelley Biography</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Author Background Information</strong></p>
+                        <p>Mary Shelley's life, the Romantic Era, and the inspiration behind Frankenstein.</p>
+                        <p>Written in 1818 when she was just eighteen years old.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Mary Shelley</span>
+                        <span class="file-tag">Author Biography</span>
+                        <span class="file-tag">Romantic Era</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/Mary shelly.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/Mary shelly.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Motivational Speech -->
+                <div class="file-card" data-file="motivational-speech">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Motivational Speech to Younger Selves</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Creative Writing Assignment</strong></p>
+                        <p>What Victor Frankenstein or The Creature would say to their younger selves.</p>
+                        <p>Reflection on choices, consequences, and personal growth.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">Creative Writing</span>
+                        <span class="file-tag">Character Reflection</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/Motivational Speech to Their Younger Selves.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/Motivational Speech to Their Younger Selves.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Theme & Symbol Board -->
+                <div class="file-card" data-file="theme-symbol-board">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Theme & Symbol Board</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Visual Representation of Themes</strong></p>
+                        <p>Key themes and symbols from Frankenstein presented visually.</p>
+                        <p>Science, discovery, ambition, fear, guilt, consequences, knowledge, responsibility.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">Themes</span>
+                        <span class="file-tag">Symbolism</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/Theme & Symbol Board.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/Theme & Symbol Board.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Victor Frankenstein Character Card -->
+                <div class="file-card" data-file="victor-character-card">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Victor Frankenstein Character Card</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Detailed Character Analysis</strong></p>
+                        <p>Comprehensive breakdown of Victor Frankenstein's traits.</p>
+                        <p>Weaknesses, fears, traits, goals, and strengths analyzed in detail.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Victor Frankenstein</span>
+                        <span class="file-tag">Character Analysis</span>
+                        <span class="file-tag">Character Card</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/victor frankenstein's character card.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/victor frankenstein's character card.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Major Conflict Comic Book -->
+                <div class="file-card" data-file="major-conflict-comic">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Major Conflict Comic Book</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Visual Storytelling of Key Conflicts</strong></p>
+                        <p>Comic book style representation of major conflicts in Frankenstein.</p>
+                        <p>Visual narrative showing the struggle between creator and creation.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">Comic Book</span>
+                        <span class="file-tag">Visual Storytelling</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/major conflict comic book.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/major conflict comic book.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Major Conflict Comic Book -->
+                <div class="file-card" data-file="major-conflict-comic">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>frankenstein's lab-3d model</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>A 3d model of Frankenstein's infamous lab</strong></p>
+                        <p>A lab where he created the monster that would decide his faith</p>
+                        
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">3d lab</span>
+                        <span class="file-tag">Digital</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/frankenstein's lab-3d model.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/frankenstein's lab-3d model.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Major Conflict Comic Book -->
+                <div class="file-card" data-file="major-conflict-comic">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Graphic novel Retelling</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i>Video
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Visual Representation of Themes</strong></p>
+                        <p>Key themes and symbols from Frankenstein presented visually.
+
+Science, discovery, ambition, fear, guilt, consequences, knowledge, responsibility.</p>
+                        
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">symbolism</span>
+                        <span class="file-tag">Digital</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/Theme & Symbol Board (Mobile Video).mp4" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/Theme & Symbol Board (Mobile Video).mp4" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+
+                 <!-- Major Conflict Comic Book -->
+                <div class="file-card" data-file="major-conflict-comic">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>quizlet mini dictionaries.</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i>quizlet
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>quizlet mini dictionaries.</strong></p>
+                        <p>quizlet dictionaries with meanings to different hard vocabulary words . </p>
+                        
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">quizlet</span>
+                        <span class="file-tag">Digital</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="https://quizlet.com/user/Maira_Khan40/folders/english-dictionaries" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="https://quizlet.com/user/Maira_Khan40/folders/english-dictionaries" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+
+                 <!-- Major Conflict Comic Book -->
+                <div class="file-card" data-file="major-conflict-comic">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Frankenstein trailer</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i>Video
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Video trailer providing a glimpse into the book.</strong></p>
+                        <p>A video trailer describing the book . </p>
+                        
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">trailer</span>
+                        <span class="file-tag">Digital</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/Frankenstein's trailer.mp4" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/Frankenstein's trailer.mp4" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+ <!-- Major Conflict Comic Book -->
+                <div class="file-card" data-file="major-conflict-comic">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>quizlet mini dictionaries.</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i>quizlet
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>literary devices scavanger hunt</strong></p>
+                        <p>quizlet flashcards set with puzzles to solve and identify the literary device. </p>
+                        
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">quizlet</span>
+                        <span class="file-tag">Digital</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="https://quizlet.com/pk/1127683359/literary-devices-scavenger-hunt-flash-cards/?i=6omky6&x=1jqt" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="https://quizlet.com/pk/1127683359/literary-devices-scavenger-hunt-flash-cards/?i=6omky6&x=1jqt" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+<!-- Major Conflict Comic Book -->
+                <div class="file-card" data-file="major-conflict-comic">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Victor frankenstein's avatar</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i>snapchat
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>A persionality-based avatar</strong></p>
+                        <p>Victor frankenstain's digital avatar showing his own appearence . </p>
+                        
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Frankenstein</span>
+                        <span class="file-tag">snapchat</span>
+                        <span class="file-tag">Digital</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="english/victor frankestein's avatar.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="english/victor frankestein's avatar.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Science Files -->
+    <section class="files-section" id="science-files">
+        <div class="container">
+            <div class="files-header">
+                <h2 class="files-title">
+                    <i class="fas fa-flask"></i>
+                    Science Assignments
+                </h2>
+                <button class="back-to-subjects">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Subjects
+                </button>
+            </div>
+            
+            <div class="files-grid">
+                <!-- Atom Structures -->
+                <div class="file-card" data-file="atom-structures">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Atom Structures and Bonding</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Virtual Lab Simulation</strong></p>
+                        <p>Interactive simulation of atomic structure and chemical bonding.</p>
+                        <p>Protons, neutrons, electrons, orbits, cloud models, periodic table.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Chemistry</span>
+                        <span class="file-tag">Atoms</span>
+                        <span class="file-tag">Virtual Lab</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="science/atom structures and bonding in a virtual lab.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="science/atom structures and bonding in a virtual lab.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Biotechnology Summary -->
+                <div class="file-card" data-file="biotechnology-summary">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Biotechnology Summary</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Comprehensive Biotechnology Overview</strong></p>
+                        <p>Applications of biotechnology in health, food, and quality of life.</p>
+                        <p>GMOs, fermentation, gene therapy explained with examples.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Biology</span>
+                        <span class="file-tag">Biotechnology</span>
+                        <span class="file-tag">GMOs</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="science/biotechnology-summary.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="science/biotechnology-summary.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Genetics Simulator -->
+                <div class="file-card" data-file="genetics-simulator">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Genetics Family Tree Simulator</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Classical Genetics Simulation</strong></p>
+                        <p>Interactive tool for understanding inheritance patterns.</p>
+                        <p>Cross breeding experiments, trait inheritance, genetic variations.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Biology</span>
+                        <span class="file-tag">Genetics</span>
+                        <span class="file-tag">Simulation</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="science/genetics family tree simulator.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="science/genetics family tree simulator.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Interactive Periodic Table -->
+                <div class="file-card" data-file="periodic-table">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Interactive Periodic Table</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Digital Periodic Table Resource</strong></p>
+                        <p>Interactive element explorer with detailed properties.</p>
+                        <p>Atomic numbers, weights, states, melting/boiling points, electronegativity.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Chemistry</span>
+                        <span class="file-tag">Periodic Table</span>
+                        <span class="file-tag">Elements</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="science/interactive periodic table.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="science/interactive periodic table.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Photosynthesis Simulation -->
+                <div class="file-card" data-file="photosynthesis-simulation">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Photosynthesis Simulation</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Virtual Lab - Photosynthesis Process</strong></p>
+                        <p>Simulation showing how plants produce oxygen from water, sunlight, and CO₂.</p>
+                        <p>Adjust light intensity, temperature, CO₂ levels to observe effects.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Biology</span>
+                        <span class="file-tag">Photosynthesis</span>
+                        <span class="file-tag">Simulation</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="science/photosenthesis simulation and virtual lab.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="science/photosenthesis simulation and virtual lab.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Covalent and Ionic Bonding -->
+                <div class="file-card" data-file="bonding-simulation">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Covalent and Ionic Bonding Simulation</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Chemical Bonding Visualizer</strong></p>
+                        <p>Interactive tool to visualize differences between covalent and ionic bonds.</p>
+                        <p>Bond dipoles, partial charges, electrostatic surfaces, bond character slider.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Chemistry</span>
+                        <span class="file-tag">Chemical Bonding</span>
+                        <span class="file-tag">Simulation</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="science/simulate covalent and ionic bonding.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="science/simulate covalent and ionic bonding.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Water Cycle Simulation -->
+                <div class="file-card" data-file="water-cycle-simulation">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Water Cycle Simulation</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Hydrological Cycle Visualization</strong></p>
+                        <p>Interactive diagram showing water movement through environment.</p>
+                        <p>Precipitation, evaporation, runoff, infiltration, groundwater storage.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Earth Science</span>
+                        <span class="file-tag">Water Cycle</span>
+                        <span class="file-tag">Simulation</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="science/water cycle simulation.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="science/water cycle simulation.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+<!-- Water Cycle Simulation -->
+                <div class="file-card" data-file="water-cycle-simulation">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>biotechnology interactive model</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>An interactive biotechnology model</strong></p>
+                        <p>Interactive diagram showing the biotechnology model </p>
+                       
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">biotecnology</span>
+                        <span class="file-tag">interactive modelspan>
+                        <span class="file-tag">Simulation</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="science/biotechnology interactive model.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="science/biotechnology interactive model.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+
+<!-- Water Cycle Simulation -->
+                <div class="file-card" data-file="water-cycle-simulation">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>periodic table</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>A periodic table</strong></p>
+                        <p>Periodic table with the first 20 elements . </p>
+                       
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">periodic table</span>
+                        <span class="file-tag"> model</span>
+                        <span class="file-tag">Simulation</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="science/periodic table.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="science/periodic table.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+<!-- Water Cycle Simulation -->
+                <div class="file-card" data-file="water-cycle-simulation">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>water cycle presentation</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> zip file
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>A water cycle presentation</strong></p>
+                        <p>A presentation showing the water cycle.</p>
+                       
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">water cycle</span>
+                        <span class="file-tag">presentation</span>
+                        <span class="file-tag">Simulation</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="science/Water Cycle Presentation.zip" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="science/Water Cycle Presentation.zip" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- History Files -->
+    <section class="files-section" id="history-files">
+        <div class="container">
+            <div class="files-header">
+                <h2 class="files-title">
+                    <i class="fas fa-landmark"></i>
+                    History & Social Studies Assignments
+                </h2>
+                <button class="back-to-subjects">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Subjects
+                </button>
+            </div>
+            
+            <div class="files-grid">
+                <!-- Fatima Jinnah -->
+                <div class="file-card" data-file="fatima-jinnah">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Fatima Jinnah Biography</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Important Figure in Pakistan History</strong></p>
+                        <p>Achievements, role, and quotes of Fatima Jinnah.</p>
+                        <p>Co-founded Muslim League Women's Wing, advocated for women's rights.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Pakistan History</span>
+                        <span class="file-tag">Important Figures</span>
+                        <span class="file-tag">Women's Rights</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/Fatima jinnah.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/Fatima jinnah.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Jinnah and Nehru Comparison -->
+                <div class="file-card" data-file="jinnah-nehru-comparison">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Jinnah and Nehru Comparison</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-pdf"></i> PDF Document
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Leadership Analysis - PDF Document</strong></p>
+                        <p>Comparative study of Muhammad Ali Jinnah and Jawaharlal Nehru.</p>
+                        <p>Ideology, decision-making styles, and impact on their nations.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Pakistan History</span>
+                        <span class="file-tag">Leadership</span>
+                        <span class="file-tag">Comparative Analysis</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/Leadership Comparison_ Jinnah and Nehru.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/Leadership Comparison_ Jinnah and Nehru.pdf" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Pakistan's Leading Industries -->
+                <div class="file-card" data-file="pakistan-industries">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Pakistan's Leading Industries</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-pdf"></i> PDF Document
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Economic Study - PDF Document</strong></p>
+                        <p>Analysis of Pakistan's key industrial sectors and their importance.</p>
+                        <p>Textile, sports, agriculture, IT, and food processing industries.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Pakistan Economy</span>
+                        <span class="file-tag">Industries</span>
+                        <span class="file-tag">Economic Study</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/pakistan's leading industries..pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/pakistan's leading industries..pdf" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Political Developments Timeline -->
+                <div class="file-card" data-file="political-timeline">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-timeline"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Political Developments Timeline</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-pdf"></i> PDF Document
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Historical Timeline - PDF Document</strong></p>
+                        <p>Key political events in Indian subcontinent history (1900-1940).</p>
+                        <p>Simla Deputation, Muslim League, reforms, pacts, commissions.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Pakistan History</span>
+                        <span class="file-tag">Timeline</span>
+                        <span class="file-tag">Political Development</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/political developments timeline.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/political developments timeline.pdf" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Pakistan's Top Exports -->
+                <div class="file-card" data-file="pakistan-exports">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Pakistan's Top Exports</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-pdf"></i> PDF Document
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Export Data Analysis - PDF Document</strong></p>
+                        <p>Spreadsheet data showing Pakistan's main export commodities.</p>
+                        <p>Mineral fuels, electrical machinery, fats/oils, iron/steel, machinery.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Pakistan Economy</span>
+                        <span class="file-tag">Exports</span>
+                        <span class="file-tag">Economic Data</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/pakistan's leading industries..pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/pakistan's leading industries..pdf" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Traditional vs Modern Transport -->
+                <div class="file-card" data-file="transport-comparison">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Traditional vs Modern Transport</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-pdf"></i> image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Transportation Analysis </strong></p>
+                        <p>Comparison between traditional and modern transportation systems.</p>
+                        <p>Speed, safety, efficiency, and impact on daily life.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Transportation</span>
+                        <span class="file-tag">Comparison</span>
+                        <span class="file-tag">Modernization</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/Traditional Transport vs Modern Transport.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/Traditional Transport vs Modern Transport.pdf" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Geography Files -->
+    <section class="files-section" id="geography-files">
+        <div class="container">
+            <div class="files-header">
+                <h2 class="files-title">
+                    <i class="fas fa-globe"></i>
+                    Geography Assignments
+                </h2>
+                <button class="back-to-subjects">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Subjects
+                </button>
+            </div>
+            
+            <div class="files-grid">
+                <!-- London Map -->
+                <div class="file-card" data-file="london-map">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>London Map (Europe)</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>European City Study - London</strong></p>
+                        <p>Detailed map of London with key areas and locations.</p>
+                        <p>Coordinates, boroughs, landmarks, and transportation networks.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Geography</span>
+                        <span class="file-tag">Maps</span>
+                        <span class="file-tag">London</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/london-europe.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/london-europe.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- New York Map -->
+                <div class="file-card" data-file="new-york-map">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>New York Map (North America)</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>North American City Study - New York</strong></p>
+                        <p>Detailed map of New York metropolitan area.</p>
+                        <p>Coordinates, boroughs, suburbs, and geographic features.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Geography</span>
+                        <span class="file-tag">Maps</span>
+                        <span class="file-tag">New York</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/new york-north america.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/new york-north america.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                <!-- Traditional vs Modern Transport -->
+                <div class="file-card" data-file="transport-comparison">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Traditional vs Modern Transport</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-pdf"></i> video
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Transportation Analysis - video</strong></p>
+                        <p>Comparison between traditional and modern transportation systems.</p>
+                        <p>Speed, safety, efficiency, and impact on daily life.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Transportation</span>
+                        <span class="file-tag">Comparison</span>
+                        <span class="file-tag">Modernization</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/Global Village – Transport & Communication.mp4" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/Global Village – Transport & Communication.mp4" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                <!-- Sydney Map -->
+                <div class="file-card" data-file="sydney-map">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Sydney Map (Australia)</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Australian City Study - Sydney</strong></p>
+                        <p>Detailed map of Sydney with geographic context.</p>
+                        <p>Natural harbor, suburbs, parks, and development patterns.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Geography</span>
+                        <span class="file-tag">Maps</span>
+                        <span class="file-tag">Sydney</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/sydney-australia.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/sydney-australia.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tokyo Map -->
+                <div class="file-card" data-file="tokyo-map">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Tokyo Map (Asia)</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-image"></i> PNG Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Asian City Study - Tokyo</strong></p>
+                        <p>Detailed map of Tokyo with development context.</p>
+                        <p>Coastal location, urban expansion, transportation networks.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Geography</span>
+                        <span class="file-tag">Maps</span>
+                        <span class="file-tag">Tokyo</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/tokyo-asia.png" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/tokyo-asia.png" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Transport Access Study -->
+                <div class="file-card" data-file="transport-access-study">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Transport Access: Urban vs Rural</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-pdf"></i> image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Case Study </strong></p>
+                        <p>Comparison of transport access between Karachi (urban) and Tharparkar (rural).</p>
+                        <p>Availability, speed, reliability, cost, and impact on daily life.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Geography</span>
+                        <span class="file-tag">Transport</span>
+                        <span class="file-tag">Case Study</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/Transport Access_ Urban vs Rural Case Study.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/Transport Access_ Urban vs Rural Case Study.pdf" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Export Spreadsheet -->
+                <div class="file-card" data-file="export-spreadsheet">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Export Data Spreadsheet</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-excel"></i> Excel Document
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Economic Data Analysis - Excel</strong></p>
+                        <p>Spreadsheet data on Pakistan's top exports with values.</p>
+                        <p>Mineral fuels, electrical machinery, animal/vegetable fats & oils, etc.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">Geography</span>
+                        <span class="file-tag">Economic Data</span>
+                        <span class="file-tag">Spreadsheet</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="history and geography/Untitled spreadsheet.xlsx" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="history and geography/Untitled spreadsheet.xlsx" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Urdu Files -->
+    <section class="files-section" id="urdu-files">
+        <div class="container">
+            <div class="files-header">
+                <h2 class="files-title">
+                    <i class="fas fa-language"></i>
+                    Urdu Literature Assignments
+                </h2>
+                <button class="back-to-subjects">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Subjects
+                </button>
+            </div>
+            
+            <div class="files-grid">
+                <!-- چوتھے درویش کی کردار نگاری -->
+                <div class="file-card" data-file="chothe-darvish">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>چوتھے درویش کی کردار نگاری</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-pdf"></i> PDF Document
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>Character Analysis in Urdu Literature</strong></p>
+                        <p>Detailed analysis of the fourth dervish character from classical Urdu literature.</p>
+                        <p>Personality traits, moral values, struggles, and significance in the story.</p>
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">اردو ادب</span>
+                        <span class="file-tag">کردار نگاری</span>
+                        <span class="file-tag">چوتھا درویش</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="urdu/چوتھے درویش کی کردار نگاری.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="urdu/چوتھے درویش کی کردار نگاری.pdf" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+                 <div class="files-grid">
+                <!-- چوتھے درویش کی کردار نگاری -->
+                <div class="file-card" data-file="chothe-darvish">
+                    <div class="file-header">
+                        <div class="file-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Chai ki kahani</h3>
+                            <div class="file-type">
+                                <i class="far fa-file-pdf"></i>video
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-content">
+                        <p><strong>A nice engaging story an=bout chai</strong></p>
+                        <p>Detailed funny story with images.</p>
+                        
+                    </div>
+                    <div class="file-tags">
+                        <span class="file-tag">اردو ادب</span>
+                        <span class="file-tag">story</span>
+                        
+                    </div>
+                    <div class="file-actions">
+                        <a href="urdu/_ چائے کی کہانی.mp4" class="btn-view" target="_blank">
+                            <i class="fas fa-eye"></i> View Assignment
+                        </a>
+                        <a href="urdu/_ چائے کی کہانی.mp4" class="btn-download" download>
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">MySchoolPortfolio</div>
+            <p class="copyright">© 2023 School Portfolio. All assignments organized by subject with direct links.</p>
+            <p class="copyright" style="margin-top: 8px;">Current subject: <span id="current-subject-display">All Subjects</span></p>
+            <p class="copyright" style="margin-top: 8px; font-size: 12px;">
+                <i class="fas fa-info-circle"></i> Click on any assignment to view or download it
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            
+            if (document.body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Toggle menu icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Subject Navigation Logic
+        const navLinks = document.querySelectorAll('nav a');
+        const subjectCards = document.querySelectorAll('.subject-card');
+        const filesSections = document.querySelectorAll('.files-section');
+        const subjectsSection = document.getElementById('subjects');
+        const currentSubjectDisplay = document.getElementById('current-subject-display');
+        
+        // Function to show a specific files section
+        function showFiles(subject) {
+            // Hide all files sections and show subjects
+            filesSections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            subjectsSection.style.display = 'none';
+            
+            // Show the selected files section
+            const filesSection = document.getElementById(`${subject}-files`);
+            if (filesSection) {
+                filesSection.style.display = 'block';
+                currentSubjectDisplay.textContent = getSubjectName(subject);
+            }
+            
+            // Update active nav link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-subject') === subject) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Close mobile menu if open
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Function to show all subjects
+        function showAllSubjects() {
+            filesSections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            subjectsSection.style.display = 'block';
+            currentSubjectDisplay.textContent = 'All Subjects';
+            
+            // Update active nav link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-subject') === 'all') {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to subjects section
+            window.scrollTo({ top: subjectsSection.offsetTop - 80, behavior: 'smooth' });
+        }
+        
+        // Get subject display name
+        function getSubjectName(subjectKey) {
+            const subjectNames = {
+                'english': 'English Literature',
+                'science': 'Science',
+                'history': 'History & Social Studies',
+                'geography': 'Geography',
+                'urdu': 'Urdu Literature'
+            };
+            return subjectNames[subjectKey] || subjectKey;
+        }
+        
+        // Set up nav link click handlers
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const subject = link.getAttribute('data-subject');
+                
+                if (subject === 'all') {
+                    showAllSubjects();
+                } else {
+                    showFiles(subject);
+                }
+            });
+        });
+        
+        // Set up subject card click handlers
+        subjectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const subject = card.getAttribute('data-subject');
+                showFiles(subject);
+            });
+        });
+        
+        // Set up back to subjects buttons
+        const backButtons = document.querySelectorAll('.back-to-subjects');
+        backButtons.forEach(button => {
+            button.addEventListener('click', showAllSubjects);
+        });
+        
+        // Set up initial state
+        showAllSubjects();
+        
+        // Prevent file card clicks from opening the assignment (since we have buttons)
+        const fileCards = document.querySelectorAll('.file-card');
+        fileCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Only prevent default if not clicking on buttons
+                if (!e.target.closest('.btn-view') && !e.target.closest('.btn-download')) {
+                    e.stopPropagation();
+                }
+            });
+        });
+        
+        // Add animation on scroll for subject cards
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe subject cards for animation
+        subjectCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+        
+        // Observe file cards for animation
+        fileCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+        
+        // File link checker (for demonstration)
+        console.log("All assignment links are set to the file names you provided.");
+        console.log("Make sure these files are in the same folder as this HTML file, or update the links to point to the correct file locations.");
+    </script>
+</body>
+</html>
